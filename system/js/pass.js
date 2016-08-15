@@ -1,6 +1,8 @@
-var source1;
-var source2;
-var temp;
+var source1, 
+    source2, 
+    temp,
+    pass;
+    
 $(document).ready(function() {
     source1 = $("#passTemplate").html();
     source2 = $("#adminTemplate").html();
@@ -9,33 +11,33 @@ $(document).ready(function() {
       checkit("#pass", /[a-zA-Zа-яА-Я]+/, "red", "blue", 20);
     
     });
-var pass;
+
 try {
     $.getJSON("system/info.txt", function(data) {
         try {
             if(data!==undefined){
+
             pass = rhex(data);
+
             }
             else{
-            alert('Load error or IP access denied!');
-                }
+            	alert('Load error or IP access denied!');
+            }
         } catch (e) {
             console.log(e);
-             alert('Load error or IP access denied!');
+            alert('Load error or IP access denied!');
         }
     }).fail(
-    
         function() {
-   alert('Load error or IP access denied!');
-  }
-    
+   	alert('Load error or IP access denied!');
+  	}
     );
 } catch (e) {
     console.log(e);
-   
 }
 
 function checkPass() {
+
   if(pass!==undefined){
     if (rhex($('#pass').val()) === pass.toString()) {
         temp = Handlebars.compile(source2);
@@ -65,7 +67,7 @@ toolbar : [
     }
 }
 }
-//----------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 /*
  * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
  * Digest Algorithm, as defined in RFC 1321.
