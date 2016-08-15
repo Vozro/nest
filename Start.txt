@@ -1,4 +1,5 @@
 https://nestpanel.github.io
+2016
 
 Start with Nest
 
@@ -14,17 +15,6 @@ Start with Nest
 
 6.Enter default password "0". 
 
-You can change password in "system/info.txt".
-Hide info.txt file with .htaccess. Just add .htaccess file to folder.
+You can change password in "system/info.json", when you have write password you must hide password, just by click button in start page.
 
-.htaccess
---------------------------------
-Options -Indexes
-<Files info.txt>
-order deny,allow 
-deny from all 
-allow from  !WRITE YOUR IP HERE!
-</Files>
---------------------------------
-
-7.Write class, id or tag of element and text for it
+7.Write .class, #id or tag of element and text for it

@@ -12,13 +12,41 @@ $(document).ready(function() {
     
     });
 
+//var code = CryptoJS.AES.encrypt('string1', 'string2');
+//CryptoJS.AES.decrypt(code, 'o').toString(CryptoJS.enc.Utf8));
+function hidePass(){
 try {
-    $.getJSON("system/info.txt", function(data) {
+   
+    $.getJSON("system/info.json", function(data) {
         try {
+            
             if(data!==undefined){
+               
 
-            pass = rhex(data);
+    $.ajax({
+        url: "system/pass.php",
+        type: "post",
+        data: ({
+            text: rhex(data.password)+'nest'
+        }),
+        beforeSend: function() {
+            $('body').append('<div id="frame" class="overflow_hidden  b_1px_solid_black br_100% bgc_rgb(255,255,255) w_140px h_140px absolute clean center"><img id="spin" src="system/spinner.gif"  class="w_100px absolute clean center"></div>');
+            createatom();
+            setInterval(function() {
+                $('#spin').remove();
+                $('#frame').remove();
+                window.location.reload();
+            }, 2400);
+        },
+        dataType: "text"
+    }).always(function() {
+       alert( "Rewrite password!");
+    });
 
+
+           
+                
+                
             }
             else{
             	alert('Load error or IP access denied!');
@@ -35,11 +63,32 @@ try {
 } catch (e) {
     console.log(e);
 }
-
+}
 function checkPass() {
-
+    
+     $.getJSON("system/newinfo.json", function(data) {
+        try {
+            
+            if(data!==undefined){
+                 pass = data;
+                //alert(pass);
+                checkNewPass();
+            }
+            else{
+            	alert('Load error or IP access denied!');
+            }
+        } catch (e) {
+            console.log(e);
+            alert('Load error or IP access denied!');
+        }
+    }).fail(
+        function() {
+   	alert('Load error or IP access denied!');
+  	}
+    );
+    function checkNewPass(){
   if(pass!==undefined){
-    if (rhex($('#pass').val()) === pass.toString()) {
+    if (rhex($('#pass').val()) === pass.password.replace('nest','')) {
         temp = Handlebars.compile(source2);
         document.body.innerHTML = temp('');
         draw();
@@ -65,7 +114,7 @@ toolbar : [
            } else {
         alert('False');
     }
-}
+}}
 }
 //-------------------------------------------------------------------------------------------------
 /*
