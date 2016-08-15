@@ -139,6 +139,33 @@
  
   </div>
     </div>
+          <div class="columns">
+          <div class="column">
+ 
+  </div>
+     <div class="column">
+     
+       <div class="control is-grouped">
+  <p class="control is-expanded">
+       <input type="text" id="demoLink" class="input" value="index.html" placeholder="Page name with extension">
+  </p>
+  <p class="control">
+   <a class="button is-primary" onclick="demo()">Demo</a>
+  </p>
+</div>
+   </div>    
+ <div class="column">
+ 
+  
+  </div>
+      
+ 
+</div>
+    <iframe id="pageDemo" src="index.html" width="100%" height="350" style="background-color:white; border:1px solid black;">
+        
+    </iframe>
+    <br>  <br>
+    
     <div class="notification is-info">
   
   Nest Admin - it's  integrated panel for your site. Nest put text and html into your web page. Good for landing page.<br> For setting Nest you only need to take web page and put into root folder, near "admin.html" after that add script "nest.js" to it. When script added it's all, then write text and write <i>.class, #id or name</i> of element in which you want add a text.
@@ -147,5 +174,12 @@
   
 </div>
 </script>
-
+<script>
+    function demo(){
+      var link =  $('#demoLink').val();
+        if(link!==undefined){
+        $('#pageDemo').attr('src', link);
+             }
+    }
+</script>
 </html>

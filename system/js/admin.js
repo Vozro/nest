@@ -89,6 +89,7 @@ function save() {
             }]
         });
     }
+    demo();
 }
 
 function send() {
@@ -121,4 +122,5 @@ function del() {
     send();
     $('#className').val('');
     CKEDITOR.instances.classText.setData('');
+    demo();
 }
